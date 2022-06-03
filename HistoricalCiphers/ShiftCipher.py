@@ -21,8 +21,3 @@ def decrypt(cipher_text: str, key: int):
         decrypted_content += letters[(letters.index(letter) - key) % len(letters)]
 
     return decrypted_content
-
-
-if __name__ == '__main__':
-    print(encrypt('attack', 1123))
-    print(decrypt(encrypt('attack', 1123), 1123))

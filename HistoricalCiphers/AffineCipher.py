@@ -10,9 +10,9 @@ def generate_a(mod: int):
             return a
 
 
-def get_inverse(a):
-    for i in range(26):
-        if (a * i) % 26 == 1:
+def get_inverse(a, mod):
+    for i in range(mod):
+        if (a * i) % mod == 1:
             return i
 
 
@@ -34,12 +34,6 @@ def decrypt(cipher_text: str, a: int, b: int):
 
     decrypted_content = ''
     for letter in cipher_text:
-        decrypted_content += letters[((letters.index(letter) - b) * get_inverse(a)) % len(letters)]
+        decrypted_content += letters[((letters.index(letter) - b) * get_inverse(a, len(letters))) % len(letters)]
 
     return decrypted_content
-
-
-if __name__ == '__main__':
-    A = generate_a(26)
-    print(encrypt('attack', A, 12))
-    print(decrypt(encrypt('attack', A, 12), A, 12))
